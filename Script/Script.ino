@@ -11,6 +11,10 @@
 #define Tecla_2 0xFA050707 
 #define Tecla_3 0xF9060707
 
+#define Tecla_4 0xF7080707
+#define Tecla_5 0xF6090707
+#define Tecla_6 0xF50A0707
+
 #define Tecla_VolMas 0xF8070707
 #define Tecla_VolMen 0xF40B0707 
 
@@ -45,26 +49,36 @@ void loop() {
 
     Serial.println(IrReceiver.decodedIRData.decodedRawData, HEX); 
 
-    if (IrReceiver.decodedIRData.decodedRawData == Tecla_1){
-      posAdelante = 90;
+    if (IrReceiver.decodedIRData.decodedRawData == Tecla_2){
       posAbajo = 90;
       servoAbajo.write(posAbajo);
-      servoAdelante.write(posAdelante);
-    }
-
-    if (IrReceiver.decodedIRData.decodedRawData == Tecla_2){
-      posAdelante = 90;
-      posAbajo = 0;
-      servoAbajo.write(posAbajo);
-      servoAdelante.write(posAdelante);
     }
 
     if (IrReceiver.decodedIRData.decodedRawData == Tecla_3){
-      posAdelante = 90;
+      posAbajo = 0;
+      servoAbajo.write(posAbajo);
+    }
+
+    if (IrReceiver.decodedIRData.decodedRawData == Tecla_1){
       posAbajo = 180;
       servoAbajo.write(posAbajo);
+    }
+
+     if (IrReceiver.decodedIRData.decodedRawData == Tecla_4){
+      posAdelante = 45;
       servoAdelante.write(posAdelante);
     }
+
+    if (IrReceiver.decodedIRData.decodedRawData == Tecla_5){
+      posAdelante = 90;
+      servoAdelante.write(posAdelante);
+    }
+
+    if (IrReceiver.decodedIRData.decodedRawData == Tecla_6){
+      posAdelante = 180;
+      servoAdelante.write(posAdelante);
+    }
+
 
     if (IrReceiver.decodedIRData.decodedRawData == Tecla_Izquierda){
       if(posAbajo < 165){
@@ -81,15 +95,15 @@ void loop() {
     }
 
     if (IrReceiver.decodedIRData.decodedRawData == Tecla_Arriba){
-      if(posAdelante < 165){
-        posAdelante = posAdelante + 15;
+      if(posAdelante < 150){
+        posAdelante = posAdelante + 30;
       }
       servoAdelante.write(posAdelante);
     }
 
     if (IrReceiver.decodedIRData.decodedRawData == Tecla_Abajo){
-      if(posAdelante > 15 ){
-        posAdelante = posAdelante - 15;
+      if(posAdelante > 30 ){
+        posAdelante = posAdelante - 30;
       }
       servoAdelante.write(posAdelante);
     }

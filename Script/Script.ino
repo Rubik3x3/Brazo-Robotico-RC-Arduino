@@ -109,16 +109,13 @@ void loop() {
     }
 
     if (IrReceiver.decodedIRData.decodedRawData == Tecla_CanalMas){
-      if(posAgarrar < 165){
-        posAgarrar = posAgarrar + 15;
-      }
+      posAgarrar = 180;
       servoAgarrar.write(posAgarrar);
     }
 
-    if (IrReceiver.decodedIRData.decodedRawData == Tecla_Abajo){
-      if(posAgarrar > 15 ){
-        posAgarrar = posAgarrar - 15;
-      }
+    if (IrReceiver.decodedIRData.decodedRawData == Tecla_CanalMen
+    ){
+      posAgarrar = 0;
       servoAgarrar.write(posAgarrar);
     }
     
